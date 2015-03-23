@@ -6,7 +6,6 @@ Created on Mon Mar 23 18:20:15 2015
 """
 
 
-
 palavra = input("Digite a palavra secreta:").lower().strip()
 for x in range(100):
      print()
