@@ -8,38 +8,32 @@ Created on Mon Mar 23 18:20:15 2015
 import turtle               # Usa a biblioteca de turtle graphics
 
 
+
+
+'''
+-------------------------------------------------------------------------------
+'''
+
+arquivo = open('lista_forca.txt', 'r+')
+l=arquivo.read()
+print(l)
+
+
 window = turtle.Screen()    # cria uma janela
-window.bgcolor("lightblue")
+window.setup(width=1400,starx=None, starty=None)
+window.bgcolor("white")
 window.title("Jogo da Forca")
 
-tartaruga   = turtle.Turtle()  # Cria um objeto "desenhador"
-tartaruga.speed(5)  # define a velocidade
-tartaruga.penup()       # Remova e veja o que acontece
-tartaruga.setpos(50,0)
-tartaruga.pendown()
-tartaruga.color("orange")
+def janela_abertura():
+    pass
+
+    
+escolha = window.textinput('Escolha', 'Escreva aqui sua letra')
+    
 
 
-dist1 = -300
-dist2 = -300
-dist3 = 100
-dist4 = 40
-
-angulo = 90
+window.exitonclick()
 
 
-tartaruga.forward(dist1) # Avança a distancia pedida
-tartaruga.right(angulo)  # Vira o angulo pedido
-tartaruga.forward(dist2) # Avança a distancia pedida
-tartaruga.left(angulo)  # Vira o angulo pedido
-tartaruga.forward(dist3) # Avança a distancia pedida
-tartaruga.right(angulo)  # Vira o angulo pedido
-tartaruga.forward(dist4) # Avança a distancia pedida
-
-arquivo = open('lista1_forca.csv', 'r+')
-for linha in arquivo.readlines():
-   print(linha)
-   
-   
-       
-
+IgneousGuikas
+lezherus
