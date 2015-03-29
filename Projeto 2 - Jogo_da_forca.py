@@ -7,13 +7,9 @@ Created on Mon Mar 23 18:20:15 2015
 import random
 import turtle               # Usa a biblioteca de turtle graphics
 
-erros = 0
-acertos = []
-erradas = []
-'''
-------------------------------------------------------------------------------
 
-'''
+#------------------------------------------------------------------------------
+
 window = turtle.Screen()    # cria uma janela
 window.setup(width=1400,startx=None, starty=None)
 window.bgcolor("white")
@@ -42,33 +38,48 @@ trave.forward(80)
 trave.right(90)
 trave.forward(20)       #fim da construção da forca
 
-'''
--------------------------------------------------------------------------------
-'''
+window.textinput("Forca", "Texto Pergunta")
+
+#------------------------------------------------------------------------------
+def lista_palavras(nome_do_arquivo="lista_forca.txt"):
+    text = open(nome_do_arquivo, 'r', encoding = 'utf-8' )
+    read = text.readlines() # lista suja
+    lista =[] # lista limpa
+    for linha in read:                  #joga todas as palavras na lista limpa
+        y = linha.strip().lower()
+        if len(y) > 0:  
+            lista.append(y)             #adiciona as palavras a nova lista
+    #print(lista)                 #imprime cada palavra
+    return lista
+
+def escolhe_palavra(palavras):
+    palavra = random.choice(palavras)
+    return palavra
+    
+def desenha_tracinhos(palavra):
+    #mover a tartaruga pro lugar certo
+    
+    for c in palavra:
+        trave.pendown()
+        if c == " ":
+            trave.penup()
+        trave.fd(100)
+        trave.penup()
+        trave.fd(20)
+
+#-------------------------------------------------------------------------------
 
 
-file = open("lista_forca.txt", encoding='utf-8')
-read=file.readlines()
-lista = random.randint(0, len(read))
-palavra = random.choice(lista)
-print(palavra)
-
-'''
--------------------------------------------------------------------------------
-'''
-
-keyword=window.textinput("Forca", "Texto Pergunta")
+#-------------------------------------------------------------------------------
 
 
-
-
-'''
--------------------------------------------------------------------------------
-'''
+#------------------------------------------------------------------------------
 
 def construcao_cabeca():
-   
+        
+        
         trave = turtle.Turtle()          #Constroi a cabeca
+        trave.hideturtle()        
         trave.speed(5)
         trave.pensize(4)
         trave.penup()
@@ -83,6 +94,7 @@ construcao_cabeca()
 def construcao_tronco():            #constroi o tronco
     
         trave = turtle.Turtle()
+        trave.hideturtle()
         trave.speed(5)
         trave.pensize(4)
         trave.penup()
@@ -97,6 +109,7 @@ construcao_tronco()
 def construcao_braco():                  #constroi o braço
     
     trave=turtle.Turtle()
+    trave.hideturtle()
     trave.speed(5)
     trave.pensize(5)
     trave.penup()
@@ -112,6 +125,7 @@ def construcao_braco2():                 #constroi o braço
     
     
     trave=turtle.Turtle()
+    trave.hideturtle()
     trave.speed(5)
     trave.pensize(5)
     trave.penup()
@@ -126,6 +140,7 @@ construcao_braco2()
 def construcao_perna():              #constroi o perna
     
     trave=turtle.Turtle()
+    trave.hideturtle()
     trave.speed(5)
     trave.pensize(5)
     trave.penup()
@@ -140,6 +155,7 @@ construcao_perna()
 def construcao_perna2():                 #constroi o perna
     
     trave=turtle.Turtle()
+    trave.hideturtle()
     trave.speed(5)
     trave.pensize(5)
     trave.penup()
@@ -150,9 +166,9 @@ def construcao_perna2():                 #constroi o perna
 
 construcao_perna2()
 
-'''
--------------------------------------------------------------------------------
-'''
+
+#-------------------------------------------------------------------------------
+
 
 
 
