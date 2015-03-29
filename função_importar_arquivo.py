@@ -7,19 +7,17 @@ Created on Thu Mar 26 10:20:45 2015
 import random #choice
 import turtle
 
-def construcao_janela():
-    
-    trave = turtle.Turtle()
-    window = turtle.Screen()    # cria uma janela
+def construcao_janela(trave, window):
     window.setup(width=1400,startx=None, starty=None)
     window.bgcolor("white")
     window.title("Jogo da Forca")
+    trave.hideturtle()
+#    window.textinput('Interface', 'Digite sua letra:')
+
     
 #------------------------------------------------------------------------------    
     
-def construcao_estrutura_forca():
-    
-    trave = turtle.Turtle()
+def construcao_estrutura_forca(trave):
     trave.speed(2)
     trave.pensize(5)
     trave.penup()
@@ -41,6 +39,7 @@ def construcao_estrutura_forca():
     trave.right(90)
     trave.forward(20)       #fim da construção da forca
     
+#construcao_estrutura_forca()    
 #------------------------------------------------------------------------------    
 
 def lista_palavras(nome_do_arquivo="lista_forca.txt"):
@@ -51,36 +50,51 @@ def lista_palavras(nome_do_arquivo="lista_forca.txt"):
         y = linha.strip().lower()
         if len(y) > 0:  
             lista.append(y)             #adiciona as palavras a nova lista
-    #print(lista)                 #imprime cada palavra
     return lista
+    
+#lista_palavras(nome_do_arquivo="lista_forca.txt")    
+    
 #------------------------------------------------------------------------------    
 
 def escolhe_palavra(palavras):
     palavra = random.choice(palavras)
     return palavra
+
+#escolhe_palavra(palavras)
 #-----------------------------------------------------------------------------
     
-def desenha_tracinhos(palavra):
+    
+def desenha_tracinhos(palavra, trave):
     #mover a tartaruga pro lugar certo
+    trave.pensize(2)
     trave.penup()
-    trave.goto(20, 20)
+    trave.goto(-140,-20)
     trave.setheading(0)
     for c in palavra:
         trave.pendown()
         if c == " ":
             trave.penup()
-        trave.fd(100)
+        trave.fd(40)
         trave.penup()
         trave.fd(20)
- #-----------------------------------------------------------------------------
         
+#desenha_tracinhos(palavra)        
+        
+ #-----------------------------------------------------------------------------
+acentos = {"a" : ["á", "ã", "â", "à"], "e" : ['é', 'ê'], 'i' : ['í'], 'o' : ['ó', "ô"], 'u' : ['ú'] }       
 def posicoes_letra(palavra, letra):
-    pos = []
+    pos = {} # posicao na palavra -> a letra que vai ser impressa
     for i in range(0, len(palavra)):
         if palavra[i] == letra:
-            pos.append(i)
+            pos[i] = letra
+        if letra in acentos.keys():
+            for letra_acentuada in acentos[letra]:
+                if letra_acentuada == palavra[i]:
+                    pos[i] = letra_acentuada
             
     return pos
+    
+#posicoes_letra(palavra, letra)
  
  #-----------------------------------------------------------------------------  
     
@@ -174,8 +188,6 @@ def construcao_perna2():                 #constroi o perna
         trave.forward(40)
 
 #------------------------------------------------------------------------------
-                    
-#window.exitonclick()
 
 
         
