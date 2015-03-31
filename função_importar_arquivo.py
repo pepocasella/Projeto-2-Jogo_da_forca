@@ -8,8 +8,9 @@ import random #choice
 import turtle
 
 def construcao_janela(trave, window):
-    window.setup(width=1400,startx=None, starty=None)
-    window.bgcolor("white")
+    #turtle.bgpic(picname='executioner.gif')
+    window.setup(width=800,startx=None, starty=None)
+    window.bgcolor("orange")
     window.title("Jogo da Forca")
     trave.hideturtle()
 #    window.textinput('Interface', 'Digite sua letra:')
@@ -74,13 +75,15 @@ def desenha_tracinhos(palavra, trave):
         trave.pendown()
         if c == " ":
             trave.penup()
-        trave.fd(40)
+        trave.fd(30)
         trave.penup()
-        trave.fd(20)
+        trave.fd(10)
         
 #desenha_tracinhos(palavra)        
         
- #-----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
+#dicionario para os acentos -> quando choice igual a letra acentuada a turtle
+#lerá a letra chutada sem acento e com acento
 acentos = {"a" : ["á", "ã", "â", "à"], "e" : ['é', 'ê'], 'i' : ['í'], 'o' : ['ó', "ô"], 'u' : ['ú'] }       
 def posicoes_letra(palavra, letra):
     pos = {} # posicao na palavra -> a letra que vai ser impressa

@@ -47,8 +47,9 @@ while True:
             #acertos
             acertos = acertos + len(pos)
             for p in pos.keys():
+                trave.hideturtle()
                 trave.penup()
-                trave.goto(-120 + 60*p, -20)
+                trave.goto(-120 + 40*p, -20)
                 trave.pendown()
                 trave.write(pos[p].upper(), align="center", font=('Arial', 24, 'bold'))           
         else:
@@ -64,12 +65,16 @@ while True:
             elif erros == 4:
                 construcao_perna()
             elif erros == 5:
+                trave.penup()
+                trave.goto(-220,-200)
+                trave.pendown()
+                trave.write('Game Over', align = 'left', font = ('arial', 60, 'normal'))
                 construcao_perna2()
             chutadas.append(letra)
             trave.penup()
-            trave.goto(40 + 60 * erros, 200)
+            trave.goto(40 + 20 * erros, 200)
             trave.pendown()
-            trave.write(letra.upper(), align="center", font=('Arial', 24, 'bold'))
+            trave.write(letra.upper(), align="center", font=('Arial', 20, 'bold'))
             erros = erros + 1
             
     opcao = window.textinput("Destino", "Vc quer jogar de novo? Se sim, digite 1")
